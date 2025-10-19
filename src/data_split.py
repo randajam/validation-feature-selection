@@ -1,7 +1,13 @@
 import pandas as pd
 import numpy as np
 
-def random_train_test_split(X, y, test_size=0.2):
+def random_train_test_split(X: pd.DataFrame, 
+                            y: pd.Series, 
+                            test_size: float = 0.2
+                            ) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
+    """
+    Randomly split dataset into train and test subsets.
+    """
     if len(X) != len(y):
         raise ValueError("X and y must have the same length")
     elif test_size < 0 or test_size > 1:
@@ -22,7 +28,14 @@ def random_train_test_split(X, y, test_size=0.2):
 
     return X_train, X_test, y_train, y_test
 
-def random_val_split(X, y, val_size=0.1, test_size=0.2):
+def random_val_split(X: pd.DataFrame,
+                     y: pd.Series, 
+                     val_size: float = 0.1, 
+                     test_size: float = 0.2
+                     )-> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:    
+    """
+    Randomly split dataset into train, validation and test subsets.
+    """
     if len(X) != len(y):
         raise ValueError("X and y must have the same length")
     elif val_size + test_size > 1:
@@ -35,7 +48,8 @@ def random_val_split(X, y, val_size=0.1, test_size=0.2):
 
     shuffled_idx = np.random.permutation(len(X))
     train_end = int(len(X) * (1 - test_size - val_size))
-    val_end = int(len(X) * val_size) + train_end
+    val_end = int(len(X) * (1 - test_size))
+
     train_idx = shuffled_idx[:train_end]
     val_idx = shuffled_idx[train_end:val_end]
     test_idx = shuffled_idx[val_end:]
