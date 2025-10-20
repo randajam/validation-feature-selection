@@ -43,10 +43,10 @@ To understand and implement:
 
 - [X] Implement random 2-part split (`test_size`)
 - [X] Implement random 3-part split (`validation_size`, `test_size`)
-- [ ] Implement date-based 2-part split (`date_split`)
-- [ ] Implement date-based 3-part split (`validation_date`, `test_date`)
-- [ ] Make all splits **deterministic** using random seed
-- [ ] Verify data proportions and non-overlapping sets
+- [X] Implement date-based 2-part split (`date_split`)
+- [X] Implement date-based 3-part split (`validation_date`, `test_date`)
+- [X] Make all splits **deterministic** using random seed
+- [X] Verify data proportions and non-overlapping sets
 
 🔁 *Goal:* Create reproducible splitting schemes for fair model evaluation.
 
